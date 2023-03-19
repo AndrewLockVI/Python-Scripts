@@ -14,7 +14,6 @@ password = os.getenv("type_racer_password")
 username = os.getenv("type_racer_username")
 
 
-
 def findText(itemList):
     for i in itemList:
         if(len(i) > 40):
