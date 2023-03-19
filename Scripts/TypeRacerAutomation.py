@@ -21,69 +21,69 @@ def findText(itemList):
     
 
 
+
+driver = webdriver.Chrome()
+
+driver.get("https://play.typeracer.com/")
+driver.maximize_window()
+
+
+
+
+
+
+time.sleep(1)
+
+driver.find_element(by=By.XPATH,value='//*[@id="userInfo"]/div/div[2]/div[2]/div[1]/a[2]').click()
+driver.find_element(by=By.XPATH, value='/html/body/div[5]/div/div/div[3]/div/div[1]/div/table[1]/tbody/tr[2]/td/div/table/tbody/tr[1]/td[2]/input').send_keys(username)
+driver.find_element(by=By.XPATH, value='/html/body/div[5]/div/div/div[3]/div/div[1]/div/table[1]/tbody/tr[2]/td/div/table/tbody/tr[2]/td[2]/table/tbody/tr[1]/td/input').send_keys(password)
+driver.find_element(by=By.XPATH, value='/html/body/div[5]/div/div/div[3]/div/div[1]/div/table[1]/tbody/tr[2]/td/div/table/tbody/tr[4]/td[2]/table/tbody/tr/td[1]/button').click()
+time.sleep(1)
+driver.find_element(by=By.XPATH, value='/html/body/div[6]/div/div/div[1]').click()
+
+time.sleep(2)
+
+
+startButton = driver.find_element(by=By.XPATH, value='//*[@id="gwt-uid-1"]/a')
+
+startButton.click()
+
+time.sleep(2)
+
+currentText =  driver.find_elements(by=By.TAG_NAME, value="table")
+
+alltext = ""
+
+for i in currentText:
+    alltext += i.text
+
+
+allList = alltext.split("\n")
+
+iminput = Image.open('inputbar.png')
+imStart = Image.open('startRace.png')
+
+
+
 while True:
-    driver = webdriver.Chrome()
+    if pyautogui.locateOnScreen(imStart) != None:
+        print("starting")
+        break
 
-    driver.get("https://play.typeracer.com/")
-    driver.maximize_window()
-
-
-
-
-
-
-    time.sleep(1)
-
-    driver.find_element(by=By.XPATH,value='//*[@id="userInfo"]/div/div[2]/div[2]/div[1]/a[2]').click()
-    driver.find_element(by=By.XPATH, value='/html/body/div[5]/div/div/div[3]/div/div[1]/div/table[1]/tbody/tr[2]/td/div/table/tbody/tr[1]/td[2]/input').send_keys(username)
-    driver.find_element(by=By.XPATH, value='/html/body/div[5]/div/div/div[3]/div/div[1]/div/table[1]/tbody/tr[2]/td/div/table/tbody/tr[2]/td[2]/table/tbody/tr[1]/td/input').send_keys(password)
-    driver.find_element(by=By.XPATH, value='/html/body/div[5]/div/div/div[3]/div/div[1]/div/table[1]/tbody/tr[2]/td/div/table/tbody/tr[4]/td[2]/table/tbody/tr/td[1]/button').click()
-    time.sleep(1)
-    driver.find_element(by=By.XPATH, value='/html/body/div[6]/div/div/div[1]').click()
-
-    time.sleep(2)
+while True:
+    if pyautogui.locateOnScreen(iminput) != None:
+        inputLocation = pyautogui.locateOnScreen(iminput)
+        pyautogui.moveTo(inputLocation)
+        break
 
 
-    startButton = driver.find_element(by=By.XPATH, value='//*[@id="gwt-uid-1"]/a')
-
-    startButton.click()
-
-    time.sleep(2)
-
-    currentText =  driver.find_elements(by=By.TAG_NAME, value="table")
-
-    alltext = ""
-
-    for i in currentText:
-        alltext += i.text
+pyautogui.click()
 
 
-    allList = alltext.split("\n")
+textAll = findText(allList)
+for i in textAll:
+    pyautogui.write(i)
+    
 
-    iminput = Image.open('inputbar.png')
-    imStart = Image.open('startRace.png')
-
-
-
-    while True:
-        if pyautogui.locateOnScreen(imStart) != None:
-            print("starting")
-            break
-
-    while True:
-        if pyautogui.locateOnScreen(iminput) != None:
-            inputLocation = pyautogui.locateOnScreen(iminput)
-            pyautogui.moveTo(inputLocation)
-            break
-
-
-    pyautogui.click()
-
-
-    textAll = findText(allList)
-    for i in textAll:
-        pyautogui.write(i)
-        
-
-    time.sleep(5)
-    driver.close()
+time.sleep(5)
+driver.close()
