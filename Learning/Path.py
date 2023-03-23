@@ -1,4 +1,8 @@
 #Seeing how python handles paths and refrencing files
+#This is important because direct file refrences i.e. open('rndfile.txt')
+#will not work unless the python file is executed from the directory that
+#also has rndfile.txt in it unless you change to the proper directory using
+#os.chdir() where the input is the correct path.
 
 import os
 from pathlib import Path
