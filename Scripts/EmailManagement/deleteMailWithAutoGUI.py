@@ -15,3 +15,5 @@ while (count < 300):
     pyautogui.click(1387,243)
     count += 1
     time.sleep(1.5)
+
+
