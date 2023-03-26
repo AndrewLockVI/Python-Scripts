@@ -9,4 +9,9 @@ driver.find_element(by=By.CLASS_NAME, value='gLFyf').send_keys('testing')
 time.sleep(3)
 driver.close()
 
+import requests
+
+req = requests.get("https://google.com")
+
+print(req.content)
 
