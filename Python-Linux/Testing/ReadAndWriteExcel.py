@@ -20,9 +20,12 @@ update_excel.to_excel(str(Path(__file__).parent) + '/test.xlsx', sheet_name='tes
 
 excel = pd.read_excel(excel_path)
 xaxis = excel['NAME']
-yaxis = excel['HEIGHT']
+yaxis = excel['WIDTH']
 
 
 ax.bar(xaxis , yaxis)
 plt.show()
+
+
+
 
