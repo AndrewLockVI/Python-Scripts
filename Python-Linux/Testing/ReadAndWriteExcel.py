@@ -1,15 +1,28 @@
 import pandas as pd
-print('testing')
+from pathlib import Path
+import matplotlib.pyplot as plt
 
-
-to_write = pd.DataFrame({ 'WIDTH' : [22 , 12 , 12], 'HEIGHT' : [22 , 45 , 43]})
-to_write.to_excel('test.xlsx', sheet_name='test_sheet')
-print('Data Frame Information: \n' + str(to_write))
-
-
-out_excel = pd.read_excel('test.xlsx')
-print(out_excel)
+fig, ax= plt.subplots()
 
 
 
+excel_path = str(Path(__file__).parent) + '/test.xlsx'
+to_write = pd.DataFrame({ 'NAME' : ['James', 'Timmy', 'Sally'], 'WIDTH' : [22 , 12 , 12], 'HEIGHT' : [22 , 45 , 43]})
+to_write.to_excel(str(Path(__file__).parent) + '/test.xlsx', sheet_name='test_sheet')
+
+
+
+out_excel = pd.read_excel(str(Path(__file__).parent) + '/test.xlsx')
+
+update_excel = out_excel.append( {'NAME' : 'Andrew' , 'HEIGHT': 22 , 'WIDTH' : 20}, True)
+
+update_excel.to_excel(str(Path(__file__).parent) + '/test.xlsx', sheet_name='test_sheet')
+
+excel = pd.read_excel(excel_path)
+xaxis = excel['NAME']
+yaxis = excel['HEIGHT']
+
+
+ax.bar(xaxis , yaxis)
+plt.show()
 
