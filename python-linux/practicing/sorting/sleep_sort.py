@@ -9,9 +9,6 @@ def sleep_sort(input_num):
     print(input_num)
 
 
-
-
-
 if __name__ == '__main__':
     long_list = sac.random_list(10)
     print(long_list) 
