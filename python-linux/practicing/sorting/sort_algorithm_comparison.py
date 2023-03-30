@@ -6,7 +6,7 @@ from random_sort import random_sort
 from count_sort import count_sort
 from default_sort import default_sort
 from insertion_sort import insertion_sort
-
+from average_sort import average_sort
 
 
 
@@ -24,7 +24,7 @@ def random_list(length):
     list_to_sort = []
     while count < length:
         count += 1
-        list_to_sort.append(int(1000 * random.random()* 100000))
+        list_to_sort.append(int(random.random()* 100))
     return list_to_sort
 
 
@@ -66,11 +66,21 @@ if __name__ == '__main__':
     t1 =  time.time()
     default_time = t1 - t0
     print("Default Sort Time: " + str(default_time))
+
     t0 = time.time()
     sorted_list = insertion_sort(list_to_sort)
     t1 = time.time()
     insertion_time = t1 - t0
     print("Insertion Time: " + str(insertion_time))
+
+
+    t0 = time.time()
+    sorted_list = average_sort(list_to_sort)
+    t1 = time.time()
+    average_time = t1 - t0
+    print("Average Sort Time: " + str(average_time))
+
+
 
     if len(sorted_list) < 15:
         print(sorted_list)

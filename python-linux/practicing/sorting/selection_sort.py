@@ -1,4 +1,3 @@
-
 def selection_sort(sort_list):
     sort_list = sort_list.copy()
     smallest_val = sort_list[0]
